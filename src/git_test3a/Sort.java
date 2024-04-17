@@ -5,10 +5,20 @@ public class Sort {
 		quickSort(a, 0, a.length - 1);
 	}
 
-	static void swap(int[] a, int i, int j) { int temp = a[i]; a[i] = a[j]; a[j] = temp; }
+	static void swap(int[] a, int i, int j) {
+		int temp = a[i];
+		a[i] = a[j];
+		a[j] = temp;
+	}
 
-static int partition(int[] a, int start, int end) { 
-	// TODO: partition 알고리즘을 구현해야 함
+	static int partition(int[] a, int start, int end) {
+		int value = a[end];
+		int i = start - 1;
+		for (int j = start; j <= end - 1; ++j)
+			if (a[j] < value)
+				swap(a, ++i, j);
+		swap(a, i + 1, end);
+		return i + 1;
 	}
 
 	static void quickSort(int[] a, int start, int end) {
